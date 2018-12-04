@@ -1,4 +1,4 @@
 from django import forms
 
 
-print("try do it")
+print("try to do something")
