@@ -14,3 +14,5 @@ print("message to  Masha")
 print("message to Lena")
 
 print("massage for all")
+
+print ("not success")
