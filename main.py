@@ -10,3 +10,5 @@ print ("new new")
 print ("hey")
 
 print("message to  Masha")
+
+print("message to Lena")
