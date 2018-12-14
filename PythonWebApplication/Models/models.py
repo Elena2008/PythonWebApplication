@@ -12,4 +12,24 @@ class Slave(AbstractUser):
     birth_date = models.DateField(null=True, blank=True)
 
 
+class Job(models.Model):
+    CATEGORY = (
+        (1, 'Programmer'),
+        (2, 'Medicine'),
+        (3, 'OfficeManager'),
+        (4, 'Military')
+    )
 
+    GRAPHIC = (
+        (1, 'FullDay'),
+        (2, 'PartDay')
+    )
+
+    category = models.TextField(max_length=1, blank=True, choices=CATEGORY, default=1, help_text='Выберите категорию')
+    wage = models.DecimalField(max_length=10)
+    graphic = models.TextField(max_length=1, blank=True, choices=GRAPHIC, help_text='Выберите график работы')
+    SlaveHolder = models.ForeignKey('Slave', on_delete=models.SET_NULL, null=True)
+    dateOfPlacement = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-dateOfPlacement"]
