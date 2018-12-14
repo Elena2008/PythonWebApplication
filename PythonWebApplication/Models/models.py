@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 
 class Slave(AbstractUser):
-    bio = models.TextField(max_length=500, blank=True)
+    ID = models.DecimalField(primary_key=True, max_length=100)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
@@ -33,3 +33,4 @@ class Job(models.Model):
 
     class Meta:
         ordering = ["-dateOfPlacement"]
+
