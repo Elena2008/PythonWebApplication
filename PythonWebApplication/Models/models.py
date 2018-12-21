@@ -11,7 +11,7 @@ class Slave(AbstractUser):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
 
-
+# огромные изменения в этом комменте
 class Job(models.Model):
     CATEGORY = (
         (1, 'Programmer'),
