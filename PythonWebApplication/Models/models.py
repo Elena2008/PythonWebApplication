@@ -18,7 +18,7 @@ class Person(AbstractUser):
     #  ID = models.DecimalField(primary_key=True, max_length=100, decimal_places=0, max_digits=10)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    city = models.TextField(max_length=1, blank=True, choices=CITY, help_text='Выберите город')
+    city = models.IntegerField(max_length=10, blank=True, choices=CITY, help_text='Выберите город', default=1)
     mobile_phone = models.TextField(max_length=11,blank=True)
     isEmployer = models.BooleanField(default=False)
 

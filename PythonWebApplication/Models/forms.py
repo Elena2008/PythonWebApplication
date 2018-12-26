@@ -8,11 +8,11 @@ class PersonCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
         model = Person
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'city', 'mobile_phone', 'isEmployer')
 
 
 class PersonChangeForm(UserChangeForm):
 
     class Meta:
         model = Person
-        fields = ('username', 'email')
+        fields = ('username', 'email', 'city', 'mobile_phone', 'isEmployer')
