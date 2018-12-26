@@ -3,16 +3,16 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
-from .forms import SlaveCreationForm, SlaveChangeForm
-from .models import Slave
+from .forms import PersonCreationForm, PersonChangeForm
+from .models import Person
 # Register your models here.
 
 
-class SlaveAdmin(UserAdmin):
-    add_form = SlaveCreationForm
-    form = SlaveChangeForm
-    model = Slave
-    list_display = ['email', 'username',]
+class PersonAdmin(UserAdmin):
+    add_form = PersonCreationForm
+    form = PersonChangeForm
+    model = Person
+    list_display = ['email', 'username', ]
 
 
-admin.site.register(Slave, SlaveAdmin)
+admin.site.register(Person, PersonAdmin)

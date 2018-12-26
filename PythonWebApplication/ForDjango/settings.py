@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Models.apps.ModelsConfig', # new
+    'Models.apps.ModelsConfig',  # new
 ]
 
 
@@ -121,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'Models.Slave'  # new
+AUTH_USER_MODEL = 'Models.Person'  #  new

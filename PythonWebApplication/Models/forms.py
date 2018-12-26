@@ -1,18 +1,18 @@
 # users/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import Slave
+from .models import Person
 
 
-class SlaveCreationForm(UserCreationForm):
+class PersonCreationForm(UserCreationForm):
 
     class Meta(UserCreationForm):
-        model = Slave
+        model = Person
         fields = ('username', 'email')
 
 
-class SlaveChangeForm(UserChangeForm):
+class PersonChangeForm(UserChangeForm):
 
     class Meta:
-        model = Slave
+        model = Person
         fields = ('username', 'email')
