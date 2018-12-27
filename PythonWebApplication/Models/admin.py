@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import PersonCreationForm, PersonChangeForm
-from .models import Person
+from .models import *
 # Register your models here.
 
 
@@ -16,3 +16,7 @@ class PersonAdmin(UserAdmin):
 
 
 admin.site.register(Person, PersonAdmin)
+admin.site.register(Job)
+admin.site.register(Ban)
+admin.site.register(Response)
+
