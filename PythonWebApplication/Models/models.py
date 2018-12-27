@@ -40,10 +40,10 @@ class Job(models.Model):
         (2, 'PartDay')
     )
 
-    category = models.TextField(max_length=1, blank=True, choices=CATEGORY, default=1, help_text='Выберите категорию')
+    category = models.IntegerField(blank=True, choices=CATEGORY, default=1, help_text='Выберите категорию')
     wage = models.DecimalField(max_length=10, decimal_places=2, max_digits=10)
-    graphic = models.TextField(max_length=1, blank=True, choices=GRAPHIC, help_text='Выберите график работы')
-    employer = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
+    graphic = models.IntegerField(blank=True, choices=GRAPHIC, help_text='Выберите график работы',default=1)
+    employer = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True,limit_choices_to={'isEmployer': True})
     date_of_placement = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
