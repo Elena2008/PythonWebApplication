@@ -1,10 +1,10 @@
-<!-- templates/signup.html -->
+<!-- templates/vacancy.html -->
 {% extends 'base.html' %}
 
-{% block title %}Sign Up{% endblock %}
+{% block title %}Vacancy{% endblock %}
 
 {% block content %}
-<h2>Sign up</h2>
+<h2>Add Vacancy</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
