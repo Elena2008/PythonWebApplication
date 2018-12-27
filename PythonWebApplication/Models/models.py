@@ -18,7 +18,7 @@ class Person(AbstractUser):
     #  ID = models.DecimalField(primary_key=True, max_length=100, decimal_places=0, max_digits=10)
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
-    city = models.IntegerField(max_length=10, blank=True, choices=CITY, help_text='Выберите город', default=1)
+    city = models.IntegerField(blank=True, choices=CITY, help_text='Выберите город', default=1)
     mobile_phone = models.TextField(max_length=11,blank=True)
     isEmployer = models.BooleanField(default=False)
 
@@ -68,9 +68,9 @@ class Response(models.Model):
 
 
 # бан между работником и работодателем
-class Ban:
-    employee = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
-    employer = models.ForeignKey('Person', on_delete=models.SET_NULL, null=True)
+class Ban(models.Model):
+    employee = models.ForeignKey(Person, related_name='employee', on_delete=models.SET_NULL, null=True)
+    employer = models.ForeignKey(Person, related_name='employer', on_delete=models.SET_NULL, null=True)
     date_of_ban = models.DateTimeField()
 
     def __str__(self):
