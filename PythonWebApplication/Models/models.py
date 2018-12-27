@@ -47,7 +47,7 @@ class Job(models.Model):
     date_of_placement = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.category.__str__() +' '+ self.wage.__str__() + ' ' + self.employer.__str__()
+        return self.CATEGORY[self.category - 1][1].__str__() + ' – ' + self.wage.__str__() + ' – ' + self.employer.__str__()
 
     class Meta:
         ordering = ["-date_of_placement"]

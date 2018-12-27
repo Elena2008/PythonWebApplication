@@ -14,7 +14,7 @@
                 {%if user.isEmployer %}
                 <li class="list-group-item">{{item.vacancy}}&nbsp;&ndash; {{item.employee}}&nbsp;&ndash; {{item.commentary}}</li>
                 {% else %}
-                <li class="list-group-item">{{item.category}}&nbsp;&ndash; {{item.wage}}&nbsp;&ndash; {{item.employer}}</li>
+                <li class="list-group-item">{{item}}</li>
                 {% endif %}
             {% endfor %}
         </ul>
