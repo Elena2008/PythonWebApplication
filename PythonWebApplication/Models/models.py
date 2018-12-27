@@ -47,7 +47,7 @@ class Job(models.Model):
     date_of_placement = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.category.__str__() + self.wage.__str__() + self.employer.__str__()
+        return self.category.__str__() +' '+ self.wage.__str__() + ' ' + self.employer.__str__()
 
     class Meta:
         ordering = ["-date_of_placement"]
@@ -74,7 +74,7 @@ class Ban(models.Model):
     date_of_ban = models.DateTimeField()
 
     def __str__(self):
-        return self.employee.__str__() + self.employer.__str__()
+        return self.employee.__str__() + ' ' + self.employer.__str__()
 
     class Meta:
         ordering = ["-date_of_ban"]

@@ -13,7 +13,7 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
-class Index(generic.TemplateView):
+class Home(generic.TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
