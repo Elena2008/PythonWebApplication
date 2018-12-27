@@ -8,6 +8,7 @@
   Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">logout</a></p>
   {% if items %}
+
         <ul class="list-group">
             {% for item in items %}
                 {%if user.isEmployer %}
