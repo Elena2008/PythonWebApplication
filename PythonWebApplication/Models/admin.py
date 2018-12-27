@@ -7,15 +7,15 @@ from .forms import PersonCreationForm, PersonChangeForm
 from .models import *
 # Register your models here.
 
-
+''' 
 class PersonAdmin(UserAdmin):
     add_form = PersonCreationForm
     form = PersonChangeForm
     model = Person
-    list_display = ['email', 'username', ]
+    list_display = ['email', 'username', 'city', 'mobile_phone', 'isEmployer' ]
+'''
 
-
-admin.site.register(Person, PersonAdmin)
+admin.site.register(Person)
 admin.site.register(Job)
 admin.site.register(Ban)
 admin.site.register(Response)

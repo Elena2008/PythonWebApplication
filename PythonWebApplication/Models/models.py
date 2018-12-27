@@ -19,7 +19,7 @@ class Person(AbstractUser):
     location = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     city = models.IntegerField(blank=True, choices=CITY, help_text='Выберите город', default=1)
-    mobile_phone = models.TextField(max_length=11,blank=True)
+    mobile_phone = models.TextField(max_length=11, blank=True)
     isEmployer = models.BooleanField(default=False)
 
     def __str__(self):
@@ -43,7 +43,7 @@ class Job(models.Model):
     category = models.IntegerField( blank=True, choices=CATEGORY, default=1, help_text='Выберите категорию')
     wage = models.DecimalField(max_length=10, decimal_places=2, max_digits=10)
     graphic = models.IntegerField(blank=True, choices=GRAPHIC, help_text='Выберите график работы',default=1)
-    employer = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True,limit_choices_to={'isEmployer': True})
+    employer = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True, limit_choices_to={'isEmployer': True})
     date_of_placement = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
@@ -56,7 +56,8 @@ class Job(models.Model):
 #  отклик
 class Response(models.Model):
     vacancy = models.ForeignKey(Job,related_name='items', on_delete=models.SET_NULL, null=True)
-    employee = models.ForeignKey(Person, related_name='items', on_delete=models.SET_NULL, null=True)
+    employee = models.ForeignKey(Person, related_name='items', on_delete=models.SET_NULL,
+                                 null=True, limit_choices_to={'isEmployer': False})
     date_of_response = models.DateTimeField()
     commentary = models.TextField(max_length=300,blank=True)
 
@@ -69,8 +70,10 @@ class Response(models.Model):
 
 # бан между работником и работодателем
 class Ban(models.Model):
-    employee = models.ForeignKey(Person, related_name='employee', on_delete=models.SET_NULL, null=True)
-    employer = models.ForeignKey(Person, related_name='employer', on_delete=models.SET_NULL, null=True)
+    employee = models.ForeignKey(Person, related_name='employee', on_delete=models.SET_NULL, null=True,
+                                 limit_choices_to={'isEmployer': False})
+    employer = models.ForeignKey(Person, related_name='employer', on_delete=models.SET_NULL, null=True,
+                                 limit_choices_to={'isEmployer': True})
     date_of_ban = models.DateTimeField()
 
     def __str__(self):

@@ -23,7 +23,7 @@ class Home(generic.TemplateView):
             if user.isEmployer:
                 context['items'] = Response.objects.filter(vacancy__in=Job.objects.filter(employer=user))
             else:
-                context['items'] = Job.objects.filter()
+                context['items'] = Job.objects.exclude(employer__in=Ban.objects.filter(employee=user).values('employer'))
         return context
 
 
