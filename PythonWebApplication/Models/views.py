@@ -13,6 +13,12 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
+class AddVacancy(generic.CreateView):
+    form_class = JobCreationForm
+    success_url = reverse_lazy('vacancy')
+    template_name = 'vacancy.html'
+
+
 class Home(generic.TemplateView):
     template_name = 'home.html'
 
@@ -23,19 +29,9 @@ class Home(generic.TemplateView):
             if user.isEmployer:
                 context['items'] = Response.objects.raw('SELECT employer FROM (SELECT vacancy FROM Response WHERE employer==user) ');
             else:
-                context['items'] = Job.objects
+                context['items'] = Job.objects.filter()
         return context
 
 
-class JobList(generic.ListView):
-    model = Job
 
 
-class JobDetail(generic.DetailView):
-    model = Job
-
-
-class AddVacancy(generic.CreateView):
-    form_class = JobCreationForm
-    success_url = reverse_lazy('home')
-    template_name = 'vacancy.html'
