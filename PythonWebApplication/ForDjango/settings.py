@@ -126,3 +126,4 @@ AUTH_USER_MODEL = 'Models.Person'  # new
 LOGIN_REDIRECT_URL = 'home'
 
 LOGOUT_REDIRECT_URL = 'home'
+
