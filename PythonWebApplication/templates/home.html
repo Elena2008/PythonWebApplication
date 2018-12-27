@@ -7,9 +7,26 @@
 {% if user.is_authenticated %}
   Hi {{ user.username }}!
   <p><a href="{% url 'logout' %}">logout</a></p>
+  {% if items %}
+        <ul class="list-group">
+            {% for item in items %}
+                {%if user.isEmployer %}
+                <li class="list-group-item">{{item.vacancy}}&nbsp;&ndash; {{item.employee}}&nbsp;&ndash; {{item.commentary}}</li>
+                {% else %}
+                <li class="list-group-item">{{item.category}}&nbsp;&ndash; {{item.wage}}&nbsp;&ndash; {{item.employer}}</li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>nothing here</h3>
+    {% endif %}
+    {% if user.isEmployer%}
+        <a href="{% url 'vacancy' %}">Add vacancy</a>
+    {% endif %}
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">login</a> |
   <a href="{% url 'signup' %}">signup</a>
+
 {% endif %}
 {% endblock %}
